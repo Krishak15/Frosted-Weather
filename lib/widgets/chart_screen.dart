@@ -56,6 +56,7 @@ class BarChartSample1State extends State<TempChart> {
                   child: BlocBuilder<WeatherBlocBloc, WeatherBlocState>(
                     builder: (context, state) {
                       if (state is WeatherBlocSuccess) {
+                        //Mapping data from API response to Chart data
                         List<double> temperatures = state.forecastWeather.list
                             .map((weather) => weather.main.temp)
                             .toList();
@@ -85,8 +86,8 @@ class BarChartSample1State extends State<TempChart> {
                                     '${formatDateTime3(date)}\n',
                                     const TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
                                     ),
                                     children: <TextSpan>[
                                       TextSpan(
@@ -95,7 +96,7 @@ class BarChartSample1State extends State<TempChart> {
                                         style: TextStyle(
                                           color: widget.touchedBarColor,
                                           fontSize: 16,
-                                          fontWeight: FontWeight.w500,
+                                          fontWeight: FontWeight.w800,
                                         ),
                                       ),
                                     ],
@@ -159,7 +160,14 @@ class BarChartSample1State extends State<TempChart> {
                               show: false,
                             ),
                             barGroups: showingGroups(temperatures),
-                            gridData: const FlGridData(show: false),
+                            gridData: FlGridData(
+                              show: true,
+                              drawHorizontalLine: true,
+                              drawVerticalLine: false,
+                              checkToShowHorizontalLine: (value) {
+                                return showAllGrids(value);
+                              },
+                            ),
                           ),
                         );
                       } else {
@@ -186,7 +194,7 @@ class BarChartSample1State extends State<TempChart> {
     double y, {
     bool isTouched = false,
     Color? barColor,
-    double width = 10,
+    double width = 12,
     List<int> showTooltips = const [],
   }) {
     barColor ??= widget.barColor;
