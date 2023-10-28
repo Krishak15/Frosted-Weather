@@ -32,7 +32,7 @@ migrate_working_dir/
 .pub/
 /build/
 lib/private
-
+assets/
 # Symbolication related
 app.*.symbols
 
