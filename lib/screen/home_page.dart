@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const SizedBox(
-                              height: 10,
+                              height: 30,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -154,9 +154,10 @@ class _HomePageState extends State<HomePage> {
                                     child: SizedBox(
                                         height: 160,
                                         child: Center(
-                                            child: getWeatherIcon(state
-                                                .curentWeather
-                                                .weatherConditionCode!))),
+                                            child: getWeatherIcon(
+                                                state.curentWeather
+                                                    .weatherConditionCode!,
+                                                200))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 5.0),
