@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget getWeatherIcon(int conditionCode) {
+Widget getWeatherIcon(int conditionCode, double iconWidth) {
   bool isDay(DateTime time) {
     int hour = time.hour;
     return hour >= 6 && hour < 18;
@@ -188,6 +188,6 @@ Widget getWeatherIcon(int conditionCode) {
   return Image.asset(
     iconImagePath,
     height: 160,
-    width: 200,
+    width: iconWidth,
   );
 }
