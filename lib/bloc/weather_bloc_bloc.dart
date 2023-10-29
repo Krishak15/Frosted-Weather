@@ -42,16 +42,22 @@ class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
             "${reverseGeoCodingBaseUrl}key=$apiKeyGeoCoding&$coordinatesval&format=json"));
 
         if (responseForecast.statusCode == 200 && response.statusCode == 200) {
-          print("${responseForecast.statusCode}  ${response.statusCode}");
+          if (kDebugMode) {
+            print("${responseForecast.statusCode}  ${response.statusCode}");
+          }
 
           forecastWeather =
               ForecastWeatherModel.fromJson(json.decode(responseForecast.body));
 
-          print(forecastWeather.city.name);
+          if (kDebugMode) {
+            print(forecastWeather.city.name);
+          }
 
           reverseGeoModel =
               ReverseGeoGeocodingModel.fromJson(json.decode(response.body));
-          print(reverseGeoModel.displayName);
+          if (kDebugMode) {
+            print(reverseGeoModel.displayName);
+          }
 
           emit(WeatherBlocSuccess(
               curentWeather: currentWeather,
