@@ -37,3 +37,9 @@ String formatDateTime4(DateTime dateTime) {
 
   return formattedDate;
 }
+
+String formatDateTime5(String inputDate) {
+  final dateTime = DateTime.parse(inputDate);
+  final formattedDate = DateFormat('E, d, y').format(dateTime);
+  return formattedDate;
+}
