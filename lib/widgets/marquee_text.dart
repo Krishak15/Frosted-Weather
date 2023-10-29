@@ -14,6 +14,7 @@ class MarqueeText extends StatelessWidget {
     BuildContext context,
   ) {
     return Marquee(
+      key: const ValueKey("marquee"),
       startAfter: const Duration(seconds: 30),
       fadingEdgeEndFraction: 0.35,
       fadingEdgeStartFraction: 0.02,
